@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart Example</title>
+    <script>
+        function calculateTotalPrice() {
+            var checkboxes = document.getElementsByName('product'); 
+            var totalPrice = 0;
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    
+                    totalPrice += parseFloat(checkboxes[i].getAttribute('data-price'));
+                }
+            }
+
+            document.getElementById('totalPrice').innerHTML = totalPrice.toFixed(2); // 
+        }
+
+        window.onload = function() {
+            var checkboxes = document.getElementsByName('product'); 
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].addEventListener('change', calculateTotalPrice);
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="checkbox" name="product" value="product1" data-price="10"> Product 1 ($10)<br>
+    <input type="checkbox" name="product" value="product2" data-price="20"> Product 2 ($20)<br>
+    <input type="checkbox" name="product" value="product3" data-price="30"> Product 3 ($30)<br>
+    <div>Total Price: $<span id="totalPrice">0.00</span></div>
+</body>
+</html>

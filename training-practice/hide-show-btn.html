@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <p id="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laudantium voluptates quas eos voluptatibus in nam culpa, fugit sapiente repudiandae aliquam recusandae corrupti laborum impedit quasi, nobis tempora itaque earum!</p>
+
+    <button id="toggle">Hide</button>
+
+    <script>
+        var btn = document.getElementById("toggle");
+        var is_clicked = false;
+        $(document).ready(function(){
+            $("button").click(function(){
+                if(!is_clicked){
+                btn.innerHTML = "Hide";
+                $("#paragraph").show();
+                is_clicked = true
+                }else{
+                    btn.innerHTML = "Show";
+                    $("#paragraph").hide();
+                    is_clicked = false
+                }
+                
+            })
+        })
+    </script>
+    
+</body>
+</html>

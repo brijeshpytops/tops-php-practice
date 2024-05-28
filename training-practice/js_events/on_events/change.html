@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart Example</title>
+    <script>
+        // Function to calculate the total price
+        function calculateTotalPrice() {
+            var checkboxes = document.getElementsByName('product'); // Replace 'product' with the name attribute of your checkboxes
+            var totalPrice = 0;
+
+
+            // Iterate through all checkboxes
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    // Get the price associated with the checkbox and add it to the total price
+                    totalPrice += parseFloat(checkboxes[i].getAttribute('data-price'));
+                }
+            }
+
+
+            // Display the total price
+            document.getElementById('totalPrice').innerHTML = totalPrice.toFixed(2); // You can display the total wherever you want
+        }
+
+
+        // Attach event listeners to checkboxes
+ 
+ 
+ 
+ 
+ 
+ 
+        window.onload = function() {
+            var checkboxes = document.getElementsByName('product'); // Replace 'product' with the name attribute of your checkboxes
+
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].addEventListener('change', calculateTotalPrice);
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="checkbox" name="product" value="product1" data-price="10"> Product 1 ($10)<br>
+    <input type="checkbox" name="product" value="product2" data-price="20"> Product 2 ($20)<br>
+    <input type="checkbox" name="product" value="product3" data-price="30"> Product 3 ($30)<br>
+    <div>Total Price: $<span id="totalPrice">0.00</span></div>
+</body>
+</html>
+
+
+

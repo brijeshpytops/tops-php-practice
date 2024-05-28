@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="number"></h1>
+    <script>
+        var h1 = document.getElementById('number');
+
+        z = setInterval("counter()", 100)
+        num=0
+        function counter(){
+            if (num<=500){
+                h1.innerHTML = num++;
+            }
+            
+        }
+
+        counter()
+    </script>
+</body>
+</html>

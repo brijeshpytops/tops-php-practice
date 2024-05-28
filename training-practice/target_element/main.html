@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>target element</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+            font-size: 40px;
+        }
+        .show-more{
+            height: 200px;
+            width: 100%;
+        }
+        .show-new-font-style{
+            font-family: cursive;
+        }
+
+        .test-border {
+            border: 1px solid black;
+        }
+        .add-bg{
+            background-color: cadetblue;
+        }
+        .add-margin-padding{
+            margin: 10px;
+            padding: 100px;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="h1">Hello</h1>
+
+    <button id="hide">hide</button>
+    <button id="show">Show</button>
+    <button id="toggle">Toggle</button>
+
+    <script>
+        h1 = document.getElementById('h1')
+
+        hideBtn = document.getElementById('hide');
+        showBtn = document.getElementById('show');
+        toggleBtn = document.getElementById('toggle');
+
+        // unsing Jquery
+        $(hideBtn).click(()=>{
+            $('#h1').removeClass('test-border')
+        })
+        $(showBtn).click(()=>{
+            $('#h1').addClass('test-border')
+        })
+        $(toggleBtn).click(()=>{
+            $('#h1').toggleClass('test-border')
+        })
+
+        // hideBtn.addEventListener("click", () =>{
+        //     h1.classList.remove('test-border', 'add-bg', 'add-margin-padding');
+        // });
+
+        // showBtn.addEventListener("click", ()=>{
+        //     h1.classList.add('test-border','add-bg', 'add-margin-padding');
+        // });
+
+        // toggleBtn.addEventListener("click", ()=>{
+        //     h1.classList.toggle('test-border')
+        // });
+
+
+
+        // h1.style.color = "red";
+        // h1.style.backgroundColor="cadetblue";
+
+        // h1.className = "show-more show-new-font-style"
+
+    
+
+        // h1.classList.add('hide');
+        // h1.classList.add('show');
+    </script>
+</body>
+</html>

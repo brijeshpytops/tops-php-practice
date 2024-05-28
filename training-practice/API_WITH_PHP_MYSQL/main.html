@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP_API_CRUD</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center my-3">
+            <div class="col-lg-6">
+                <form action="" id="insert-form">
+                    <fieldset>
+                        <legend>Student registration form</legend>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input class="form-control" type="text" id="name" placeholder="Jhon Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input class="form-control" type="email" id="email" placeholder="Example@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile</label>
+                            <input class="form-control" type="text" id="mobile" placeholder="(+xx) xxx xxxx xxx">
+                        </div>
+                        <input type="submit" class="btn btn-dark" id="insert-btn" value="Add">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-lg-6 border-start">
+                <legend class="mb-3 text-center">Students Data</legend>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-data-rows">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function (event) {
+
+            function message(message, status){
+                console.log(message, status)
+            }
+
+            function fatch_data(){
+                return false
+            }
+
+            $("#insert-btn").click(function () {
+                var fields = $("#insert-form").serializeArray();
+                var usersObj = {};
+
+                for (field = 0; field < fields.length; field++) {
+                    if (fields[field].value == "") {
+                        return false;
+                    } else {
+                        usersObj[fields[fields].name] = fields[fields].value
+                    }
+                }
+
+                var user_json = JSON.stringify(usersObj);
+
+                $.ajax({
+                    url:'',
+                    type: 'POST',
+                    data : user_json,
+                    success: function(data){
+                        message(data.message, data.status_code);
+                        fatch_data();
+                        $('#insert-form').trigger('reset');
+                    }
+                })
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

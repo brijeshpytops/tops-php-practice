@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        .main{
+            display: flex;
+            justify-content: center;
+        }
+        .left,.right,.center{
+            border: 2px solid rgb(108, 108, 109);
+            height: 200px;
+            width: 200px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .btn{
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left">
+            <img id="image1">
+            <p id="para" style="text-align: center;">Image not found</p>
+        </div>
+        <div class="center">
+            <img src="https://t4.ftcdn.net/jpg/00/99/53/31/360_F_99533164_fpE2O6vEjnXgYhonMyYBGtGUFCLqfTWA.jpg" id="image2" height="200px">
+        </div>
+        <div class="right">
+            <img id="image3" height="200px">
+        </div>
+    </div>
+
+    <div class="btn">
+        <button id="si">Show img</button>
+        <button id="g2i">Get 2nd img</button>
+        <button id="tg">Toggle img</button>
+    </div>
+
+    <script>
+        img1_ = document.getElementById("image1")
+        img2_ = document.getElementById("image2")
+        img3_ = document.getElementById("image3")
+        image_1 = "https://t4.ftcdn.net/jpg/00/99/53/31/360_F_99533164_fpE2O6vEjnXgYhonMyYBGtGUFCLqfTWA.jpg"
+        image_2 = "https://media.istockphoto.com/id/520661857/photo/golden-number-two-on-white.jpg?s=612x612&w=0&k=20&c=OmKF3IGChlNy-0EkqQgNzNq6unFiiKv_UrsNkISIQG4="
+        img3_.src = image_1
+        $(document).ready(function(){
+            $("#si").click(function(){
+                img1_.src = image_1
+                img1_.style.height ="200px"
+                $("#para").hide();
+                
+            })
+
+            $("#g2i").click(function(){
+                img2_.src = image_2;
+            })
+
+
+            is_clicked = true
+            $("#tg").click(function(){
+                if(!is_clicked){
+                    img3_.src = image_1
+                    is_clicked = true
+
+                }else{
+                    img3_.src = image_2
+                    is_clicked = false
+                }
+
+            })
+
+        })
+
+        
+    </script>
+</body>
+</html>
